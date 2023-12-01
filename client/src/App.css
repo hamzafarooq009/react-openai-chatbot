@@ -1,0 +1,214 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+/* Cyberpunk-inspired chat styles with thicker borders */
+
+.message {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+
+.message-bubble {
+  border-radius: 15px;
+  padding: 15px;
+  max-width: 70%;
+  word-wrap: break-word;
+  background-color: #262626;
+  color: #c7c7c7;
+  border: 3px solid transparent; /* Adding border */
+}
+
+.sent {
+  align-self: flex-end;
+  text-align: right;
+}
+
+.sent-bubble {
+  background-color: #262626;
+  border-color: #00ffae; /* Adjusting border color */
+  border-width: 3px; /* Increasing border thickness */
+}
+
+.received {
+  align-self: flex-start;
+  text-align: left;
+}
+
+.received-bubble {
+  background-color: #262626;
+  border-color: #2979ff; /* Adjusting border color */
+  border-width: 3px; /* Increasing border thickness */
+}
+
+.message-timestamp {
+  font-size: 0.8rem;
+  color: #aaa;
+  margin-top: 5px;
+  display: block;
+  text-align: right;
+}
+
+/* Updated CSS for input field and send button */
+
+.cyber-input {
+  border: 2px solid #00ffae;
+  color: #c7c7c7;
+  background-color: #262626;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+.cyber-input::placeholder {
+  color: #c7c7c7;
+}
+
+.cyber-btn {
+  background-color: transparent;
+  border: 2px solid #00ffae;
+  color: #00ffae;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  padding: 8px 20px;
+}
+
+.cyber-btn:hover {
+  background-color: #00ffae;
+  color: #262626;
+}
+
+/* Updated CSS for the chat container and background */
+body {
+  background-color: #121212; /* Change the overall background color */
+  color: #c7c7c7;
+  font-family: Arial, sans-serif; /* Example font for text readability */
+}
+
+.chat-container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #262626;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Updated CSS for chat message and avatar */
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+/* ... (Rest of your existing CSS) */
+
+/* Updated CSS for chat messages and alignment */
+
+.align-left {
+  justify-content: flex-start;
+}
+
+.align-right {
+  justify-content: flex-end;
+}
+
+/* Updated CSS for chat header and title */
+
+.chat-header {
+  text-align: center;
+  padding: 20px;
+  background-color: #262626;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.chat-title {
+  color: #00ffae;
+  font-size: 36px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  margin-bottom: 20px;
+}
+
+.message-list-container {
+  max-height: 600px; /* Set the fixed height */
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+/* Updated CSS for input field with embedded arrow icon */
+
+.input-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.cyber-input {
+  flex: 1;
+  border: 2px solid #00ffae;
+  color: #c7c7c7;
+  background-color: #262626;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+.cyber-input::placeholder {
+  color: #c7c7c7;
+}
+
+.arrow-btn {
+  background-color: #00ffae;
+  color: #262626;
+  border: none;
+  border-radius: 20px;
+  padding: 8px;
+  cursor: pointer;
+}
