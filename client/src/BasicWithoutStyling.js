@@ -1,24 +1,15 @@
 import React, { useState, useRef, useEffect } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
-import ChatMessage from './ChatMessage'
+import './styles.css';
+import ChatMessage from './BasicChatMessage';
 
-const API_KEY = process.env.REACT_APP_OPENAI_API_KEY; // Replace 'YOUR_API_KEY' with your actual OpenAI API key
+const API_KEY = "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" // Set your OpenAI API key in environment variables
 const systemMessage = {
   role: 'system',
   content: "Explain things like you're talking to a software professional with 2 years of experience.",
 };
-
 function App() {
-  const [messages, setMessages] = useState([
-    {
-      message: "Hello, I'm ChatGPT! Ask me anything!",
-      sentTime: 'just now',
-      sender: 'ChatGPT',
-    },
-  ]);
+  const [messages, setMessages] = useState([{ message: "Hello, I'm ChatGPT! Ask me anything!", sentTime: 'just now', sender: 'ChatGPT' }]);
   const [inputMessage, setInputMessage] = useState('');
-  const [isTyping, setIsTyping] = useState(false);
   const inputRef = useRef(null);
 
   useEffect(() => {
@@ -30,17 +21,12 @@ function App() {
   const handleSend = async () => {
     if (inputMessage.trim() === '') return;
 
-    const newMessage = {
-      message: inputMessage.trim(),
-      direction: 'outgoing',
-      sender: 'user',
-    };
-
+    const newMessage = { message: inputMessage.trim(), sentTime: new Date().toLocaleTimeString(), sender: 'user' };
     setInputMessage('');
     const newMessages = [...messages, newMessage];
     setMessages(newMessages);
 
-    setIsTyping(true);
+    // setIsTyping(true);
     await processMessageToChatGPT(newMessages);
   };
 
@@ -51,7 +37,7 @@ function App() {
 
     let apiMessages = chatMessages.map((messageObject) => {
       let role = "";
-      if (messageObject.sender === "ChatGPT") {
+      if (messageObject.sender === "ChatGPT"){
         role = "assistant";
       } else {
         role = "user";
@@ -87,37 +73,19 @@ function App() {
         message: data.choices[0].message.content,
         sender: "ChatGPT"
       }]);
-      setIsTyping(false);
+      // setIsTyping(false);
     });
   }
 
   return (
-    <div className="container mt-5">
-      <div className="chat-container">
-        <div className="chat-header">
-          <h1 className="chat-title">AI-Chat Bot 3.5 Turbo</h1>
-        </div>
-        <div className="message-list-container">
-          <div className="message-list">
-            {messages.map((message, i) => (
-              <ChatMessage key={i} message={message} />
-            ))}
-            {isTyping && <p className="text-muted">AIBot is typing...</p>}
-          </div>
-        </div>
-        <div className="input-container">
-          <input
-            type="text"
-            className="form-control cyber-input"
-            placeholder="Type a message"
-            value={inputMessage}
-            onChange={(e) => setInputMessage(e.target.value)}
-            ref={inputRef}
-          />
-          <button className="arrow-btn" type="button" onClick={handleSend}>
-          &#8594;
-          </button>
-        </div>
+    <div className="app-container">
+      <h1 className="chat-title">AI-Chat Bot 3.5 Turbo</h1>
+      <div className="messages-container">
+        {messages.map((message, index) => <ChatMessage key={index} message={message} />)}
+      </div>
+      <div className="input-container">
+        <input type="text" placeholder="Type a message" value={inputMessage} onChange={(e) => setInputMessage(e.target.value)} ref={inputRef} />
+        <button type="button" onClick={handleSend}>Send</button>
       </div>
     </div>
   );
